@@ -69,7 +69,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: /home/u928962285/domains/bureaunationalcedeao-ci.org/public_html/
+          server-dir: https://srv1906-files.hstgr.io/97dfb7ac03d22fd1/files/domaines/bureaunationalcedeao-ci.org/public_html/
           exclude: |
             **/.git*
             **/.git*/**
