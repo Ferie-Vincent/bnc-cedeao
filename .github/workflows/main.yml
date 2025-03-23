@@ -36,6 +36,9 @@ jobs:
       - name: Set Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
 
+      - name: Create Storage Link
+        run: php artisan storage:link
+
       - name: Copy .env file
         run: |
           echo "APP_NAME=Laravel" > .env
