@@ -60,9 +60,9 @@
 
                     <p>
                         Un Bureau National CEDEAO dynamique
-                        pour une meilleure coordination des actions de la CEDEAO, au service d’une
-                        communauté de peuples pleinement intégrée dans une Côte d’Ivoire
-                        rayonnante et prospère, au cœur du processus d’intégration régionale
+                        pour une meilleure coordination des actions de la CEDEAO, au service d'une
+                        communauté de peuples pleinement intégrée dans une Côte d'Ivoire
+                        rayonnante et prospère, au cœur du processus d'intégration régionale
                     </p>
 
                     <hr class="hr">
@@ -70,7 +70,7 @@
                     <h3 class="event-title">Le slogan</h3>
                     <p>
                         Le Bureau National CEDEAO, un cadre de référence des
-                        actions de la CEDEAO en Côte d’Ivoire
+                        actions de la CEDEAO en Côte d'Ivoire
                     </p>
 
                 </div>
@@ -137,7 +137,7 @@
                                             Capital: <br>
                                         <h2>
                                             <span style="font-weight: bold; color: orange">
-                                                {{ $cotedivoire->capitalePolitique }}
+                                                {{ $cotedivoire->capitalePolitique ?? '' }}
                                             </span>
                                         </h2>
                                         </p>
@@ -170,63 +170,63 @@
                                 <tbody>
                                     <tr>
                                         <th>Chef de Gouvernement</th>
-                                        <td>{{ $cotedivoire->chefGouvernement }}</td>
+                                        <td>{{ $cotedivoire->chefGouvernement ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Gouvernement</th>
-                                        <td>{{ $cotedivoire->gouvernement }}</td>
+                                        <td>{{ $cotedivoire->gouvernement ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Capitale Politique</th>
-                                        <td>{{ $cotedivoire->capitalePolitique }}</td>
+                                        <td>{{ $cotedivoire->capitalePolitique ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Superficie</th>
-                                        <td>{{ $cotedivoire->superficie }} <sup>2</sup> </td>
+                                        <td>{{ $cotedivoire->superficie ?? '' }} <sup>2</sup> </td>
                                     </tr>
                                     <tr>
                                         <th>Population</th>
-                                        <td>{{ $cotedivoire->population }}</td>
+                                        <td>{{ $cotedivoire->population ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Indépendance</th>
-                                        <td>{{ $cotedivoire->independanceDay }}</td>
+                                        <td>{{ $cotedivoire->independanceDay ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Langue officielle</th>
-                                        <td>{{ $cotedivoire->langOfficielle }}</td>
+                                        <td>{{ $cotedivoire->langOfficielle ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Langue la plus parlé</th>
-                                        <td>{{ $cotedivoire->langParle }}</td>
+                                        <td>{{ $cotedivoire->langParle ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Espérance de vie</th>
-                                        <td>{{ $cotedivoire->esperanceVie }}</td>
+                                        <td>{{ $cotedivoire->esperanceVie ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>PIP par habitant</th>
-                                        <td>{{ $cotedivoire->pipHabitant }}</td>
+                                        <td>{{ $cotedivoire->pipHabitant ?? ''}}</td>
                                     </tr>
                                     <tr>
                                         <th>Taux de croissance annuel</th>
-                                        <td>{{ $cotedivoire->tauxCroissanceAnnuel }}</td>
+                                        <td>{{ $cotedivoire->tauxCroissanceAnnuel ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Monnaie</th>
-                                        <td>{{ $cotedivoire->monnaie }}</td>
+                                        <td>{{ $cotedivoire->monnaie ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Indice de développement humain</th>
-                                        <td>{{ $cotedivoire->indiceDeveHumain }}</td>
+                                        <td>{{ $cotedivoire->indiceDeveHumain ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Fuseau horaire</th>
-                                        <td>{{ $cotedivoire->fuseauHoraire }}</td>
+                                        <td>{{ $cotedivoire->fuseauHoraire ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Liens du gouvernement officiel</th>
-                                        <td>{{ $cotedivoire->websiteGouvernement }}</td>
+                                        <td>{{ $cotedivoire->websiteGouvernement ?? '' }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -241,33 +241,33 @@
                                 <tbody>
                                     <tr>
                                         <th>Nom du Ministère</th>
-                                        <td>{{ $cotedivoire->ministery }}</td>
+                                        <td>{{ $cotedivoire->ministery ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Nom du Ministre</th>
-                                        <td>{{ $cotedivoire->ministerName }}</td>
+                                        <td>{{ $cotedivoire->ministerName ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Addresse</th>
-                                        <td>{{ $cotedivoire->ministerAdress}}</td>
+                                        <td>{{ $cotedivoire->ministerAdress ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Telehone</th>
-                                        <td>{{ $cotedivoire->ministerTel }}</td>
+                                        <td>{{ $cotedivoire->ministerTel ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Fax</th>
-                                        <td>{{ $cotedivoire->ministerTel }}</td>
+                                        <td>{{ $cotedivoire->ministerTel ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>
-                                        <td>{{ $cotedivoire->ministerEmail }}</td>
+                                        <td>{{ $cotedivoire->ministerEmail ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Site Web</th>
                                         <td>
-                                            <a href="{{ $cotedivoire->ministerOfficialWebsite }}">
-                                                {{ $cotedivoire->ministerOfficialWebsite }}
+                                            <a href="{{ $cotedivoire->ministerOfficialWebsite ?? '' }}">
+                                                {{ $cotedivoire->ministerOfficialWebsite ?? '' }}
                                             </a>
                                         </td>
                                     </tr>
@@ -284,27 +284,27 @@
                                 <tbody>
                                     <tr>
                                         <th>Nom du chef de bureau</th>
-                                        <td>{{ $cotedivoire->managerBnc }}</td>
+                                        <td>{{ $cotedivoire->managerBnc ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Fonction</th>
-                                        <td>{{ $cotedivoire->managerBncFunction }}</td>
+                                        <td>{{ $cotedivoire->managerBncFunction ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Telephone</th>
-                                        <td>{{ $cotedivoire->managerBncTel }}</td>
+                                        <td>{{ $cotedivoire->managerBncTel ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Fax</th>
-                                        <td>{{ $cotedivoire->managerBncFax }}</td>
+                                        <td>{{ $cotedivoire->managerBncFax ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>
-                                        <td>{{ $cotedivoire->managerBncEmail }}</td>
+                                        <td>{{ $cotedivoire->managerBncEmail ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Site web</th>
-                                        <td>{{ $cotedivoire->managerBncOfficialWebsite }}</td>
+                                        <td>{{ $cotedivoire->managerBncOfficialWebsite ?? '' }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -320,23 +320,23 @@
                                 <tbody>
                                     <tr>
                                         <th>Nom du représentant permanent</th>
-                                        <td>{{ $cotedivoire->outCedeao }}</td>
+                                        <td>{{ $cotedivoire->outCedeao ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Addresse</th>
-                                        <td>{{ $cotedivoire->outCedeaoAdresse }}</td>
+                                        <td>{{ $cotedivoire->outCedeaoAdresse ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Telehone</th>
-                                        <td>{{ $cotedivoire->outCedeaoTel }}</td>
+                                        <td>{{ $cotedivoire->outCedeaoTel ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Fax</th>
-                                        <td>{{ $cotedivoire->outCedeaoFax }}</td>
+                                        <td>{{ $cotedivoire->outCedeaoFax ?? '' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>
-                                        <td>{{ $cotedivoire->outCedeaoMail }}</td>
+                                        <td>{{ $cotedivoire->outCedeaoMail ?? '' }}</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -12,10 +12,7 @@ class Footer extends Component
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(){}
 
     /**
      * Get the view / contents that represent the component.
@@ -25,9 +22,10 @@ class Footer extends Component
     public function render()
     {
         $contenue = Piedpage::allPiedpage();
-        $liensInstitutionelles = $contenue['1'];
-        $lienUtiles = $contenue['2'];
-        $documents = $contenue['3'];
-        return view('components.footer' , compact('liensInstitutionelles','lienUtiles','documents'));
+        $liensInstitutionelles = $contenue[1] ?? [];
+        $lienUtiles = $contenue[2] ?? [];
+        $documents = $contenue[3] ?? [];
+        return view('components.footer', compact('liensInstitutionelles', 'lienUtiles', 'documents'));
     }
 }
+

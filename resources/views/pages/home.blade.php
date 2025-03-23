@@ -13,7 +13,8 @@
                         <div class="post-alternate-3 item post">
                             <div class="entry-media">
                                 <a href="articles/{{ $item->id }}" class="image-post  item-overlay">
-                                    <img src="{{ asset(env('IMAGES_PATH')) }}/{{$item->image}}" alt="">
+                                    <!-- <img src="{{ asset(env('IMAGES_PATH')) }}/{{$item->image}}" alt=""> -->
+                                    <img src="{{ asset('storage/uploads/' . $item->image) }}" alt="">
                                 </a>
 
                                 <div class="entry-content">

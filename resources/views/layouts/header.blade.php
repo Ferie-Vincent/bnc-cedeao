@@ -54,7 +54,7 @@ $page = '';
 
             <div class="row">
                 <div class="ban" style="text-align: center">
-                    <img src="{{asset('assets/images/blog/ban.png')}}" alt="">
+                    <img src="{{asset('assets/images/blog/ban.jpg')}}" alt="">
                 </div>
                 <div class="header-middle">
                     <div class="row">

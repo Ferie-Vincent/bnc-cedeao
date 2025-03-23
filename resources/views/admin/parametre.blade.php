@@ -62,7 +62,7 @@
                                         <th>{{$loop->iteration}}</th>
                                         <th>{{$typeFlashInfo['titre']}}</th>
                                         <th>
-                                            <span style="background-color: {{$typeFlashInfo['couleur']}}; padding: 3px; color:#fff">Couleur</span>
+                                            <span style="background-color: '{{$typeFlashInfo['couleur']}}'; padding: 3px; color:#fff">Couleur</span>
                                         </th>
                                         <th>
                                             <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalUpdateFlash-{{$typeFlashInfo['id']}}">

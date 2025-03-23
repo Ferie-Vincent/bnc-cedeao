@@ -10,38 +10,45 @@ use Illuminate\Support\Facades\Log;
 
 class DocumentationController extends Controller
 {
-    //
+    /**
+     * Affiche la liste des documents, catégories et types de catégories.
+     */
     public function Documentations()
     {
+        try {
+            $documents = Documentation::allDocuments() ?? [];
+            $categories = CategorieDocument::allCategorie() ?? [];
+            $typeCategories = TypeDeCategorieDocument::TypeCategorieDocument() ?? [];
 
-        $documents = Documentation::allDocuments();
-        $categories = CategorieDocument::allCategorie();
-        $typeCategories = TypeDeCategorieDocument::TypeCategorieDocument();
-        // dd($documents);
-        return view('admin.documentation', compact('documents', 'categories', 'typeCategories'));
+            return view('admin.documentation', compact('documents', 'categories', 'typeCategories'));
+        } catch (\Exception $e) {
+            Log::error('Erreur lors de la récupération des documents : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Impossible de récupérer les documents.');
+        }
     }
 
-    #Documentations
+    /**
+     * Gère la création, mise à jour ou suppression d'un document.
+     */
     public function documentation(Request $request)
     {
         try {
-            #Intencions la methode pour le traitement
+            // Validation des données reçues
+            $request->validate([
+                'titre' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'categorie_id' => 'required|integer|exists:categorie_documents,id',
+                'type_categorie_id' => 'required|integer|exists:type_de_categorie_documents,id',
+                'fichier' => 'nullable|file|mimes:pdf,doc,docx,ppt,pptx|max:2048', // Fichiers acceptés jusqu'à 2Mo
+            ]);
+
+            // Traitement du document
             $documents = Documentation::saveUpdateDeleteDocumentation($request);
 
-            #Gestion d'erreur
-            if ($documents['status'] == true) {
-                # Success...
-                return redirect()->back()->with('success', $documents['message']);
-            } else {
-
-                return redirect()->back()->with('error', $documents['message']);
-            }
+            return redirect()->back()->with($documents['status'] ? 'success' : 'error', $documents['message']);
         } catch (\Exception $e) {
-            # Enregistrer le message d'erreur dans les logs
-            Log::error('Une erreur est survenue dans le controler documents: ' . $e->getMessage());
-
-            #Message error
-            return redirect()->back()->with('error', 'Une erreur est survenue dans le controler documents.');
+            Log::error('Erreur dans le contrôleur documents : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur est survenue dans le contrôleur documents.');
         }
     }
 }

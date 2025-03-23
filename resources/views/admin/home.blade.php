@@ -179,11 +179,11 @@
               </td>
               <td>
                 
-                <span class="badge badge-danger" style="background-color: {{$flash['couleur']}}; padding: 3px; color:#fff">{{$flash['type']}}</span>
+                <span class="badge badge-danger" style="background-color: '{{$flash['couleur']}}; padding: 3px; color:#fff">{{$flash['type']}}</span>
                 
               </td>
               <td>
-                {!! Str::limit($flash['corpsTexte'], 200) !!}
+              {{ Str::limit(strip_tags($flash['corpsTexte']), 200) }}
               </td>
               <td>
                 {{$flash['date']}}
@@ -842,7 +842,7 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-            <button type="submit" class="btn btn-success">Modifier</button>
+            <button type="submit" class="btn btn-success">Ajouter</button>
           </div>
 
         </form>
