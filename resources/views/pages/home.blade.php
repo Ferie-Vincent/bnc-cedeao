@@ -40,7 +40,7 @@
             <article class="medium-4 large-4 columns">
                 <div class="row post-list full-width">
                     <div class="post post-alternate-3">
-                        <h3 style="text-align:center">Le Président de le République de <br> Côte d'Ivoire</h3>
+                        <h3 style="text-align:center">Le Président de le République  <br>  de Côte d'Ivoire</h3>
                         <hr class="hr" />
                         <div class="entry-media">
                             <a class="image-post ">
