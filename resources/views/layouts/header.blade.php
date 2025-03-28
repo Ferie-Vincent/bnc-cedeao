@@ -42,6 +42,18 @@ $page = '';
     <!-- Modernizr
     ================================================== -->
     <script src="{{asset('assets/js/vendor/jquery.modernizr.js')}}"></script>
+
+    <!-- Enregistrer le Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log("Service Worker enregistré ✅"))
+                .catch(err => console.log("Erreur Service Worker ❌", err));
+        }
+    </script>
+
+    <!-- Ajouter le manifeste -->
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body class="animated">
@@ -171,4 +183,3 @@ $page = '';
 
         @include('layouts.footer')
 
-    
