@@ -18,111 +18,91 @@ class Piedpage extends Model
         'archive',
     ];
 
-    # Sélectionner tous les Pied de pages
+    # Sélectionner tous les Pieds de page
     public static function allPiedpage()
     {
         $categories = CategoriePiedDePage::allCategorie();
-        
         $piedPages = [];
 
         foreach ($categories as $categorie) {
-            $pieds = Piedpage::where('idCategorie', $categorie->id)
+            $pieds = self::where('idCategorie', $categorie->id)
                 ->where('archive', false)
                 ->get();
-                
+
             foreach ($pieds as $pied) {
                 $piedPages[$categorie->id][] = [
-                    'idCategorie' => $pied->idCategorie ?? null,
-                    'id' => $pied->id ?? null,
-                    'categorie' => $categorie->titre ?? null,
-                    'nom' => $pied->nom ?? null,
-                    'nomAfficher' => $pied->nomAfficher ?? null,
-                    'linkS' => $pied->linkS ?? null,
+                    'idCategorie' => $pied->idCategorie,
+                    'id' => $pied->id,
+                    'categorie' => $categorie->titre,
+                    'nom' => $pied->nom,
+                    'nomAfficher' => $pied->nomAfficher,
+                    'linkS' => $pied->linkS,
                 ];
             }
         }
-        // dd($piedPages);
+
         return $piedPages;
     }
 
-
-
-    #Save || Update || Delete
+    # Enregistrer, Mettre à jour ou Archiver un Pied de page
     public static function saveUpdateDeletePiedpage($request)
     {
         try {
+            // Vérifier si l'ID est fourni (mise à jour ou suppression)
+            if (isset($request->id)) {
+                $piedPage = self::find($request->id);
 
-            #Archive
-            if (isset($request->id) && isset($request->archive) == true) {
-                # Archive
-
-                $piedPage = Piedpage::find($request->id);
-
-                if ($piedPage) {
-                    $piedPage->archive = true;
-                    $piedPage->save();
-
-                    return [
-                        'status' => true,
-                        'message' => 'Le Pied de page a été archivé avec succès.',
-                    ];
-                } else {
+                if (!$piedPage) {
                     return [
                         'status' => false,
                         'message' => 'Pied de page non trouvé.',
                     ];
                 }
-            }
 
-            #Save
-            if (!isset($request->id)) {
+                // Archiver l'entrée
+                if ($request->archive == true) {
+                    $piedPage->update(['archive' => true]);
 
+                    return [
+                        'status' => true,
+                        'message' => 'Le Pied de page a été archivé avec succès.',
+                    ];
+                }
 
-
-                $piedPage = new Piedpage();
-
-                $piedPage->idCategorie = $request->categorie;
-                $piedPage->nom = $request->nom;
-                $piedPage->nomAfficher = $request->nomAfficher;
-                $piedPage->linkS = $request->linkS;
-                $piedPage->archive = false;
-
-                $piedPage->save();
-
-                return [
-                    'status' => true,
-                    'message' => 'Le Pied de page a été traité enregistré'
-                ];
-            }
-
-            #Update
-            if (isset($request->id)) {
-
-                $id = $request->id;
-                $piedPage = Piedpage::where('id', $id)->first();
-
-
-                $piedPage->idCategorie = $request->categorie;
-                $piedPage->nom = $request->nom;
-                $piedPage->nomAfficher = $request->nomAfficher;
-                $piedPage->linkS = $request->linkS;
-                $piedPage->archive = false;
-
-                $piedPage->save();
+                // Mise à jour
+                $piedPage->update([
+                    'idCategorie' => $request->categorie,
+                    'nom' => $request->nom,
+                    'nomAfficher' => $request->nomAfficher,
+                    'linkS' => $request->linkS,
+                    'archive' => false,
+                ]);
 
                 return [
                     'status' => true,
-                    'message' => 'Le Pied page a été traité mise à jour avec succès.'
+                    'message' => 'Le Pied de page a été mis à jour avec succès.',
                 ];
             }
+
+            // Création d'un nouveau Pied de page
+            self::create([
+                'idCategorie' => $request->categorie,
+                'nom' => $request->nom,
+                'nomAfficher' => $request->nomAfficher,
+                'linkS' => $request->linkS,
+                'archive' => false,
+            ]);
+
+            return [
+                'status' => true,
+                'message' => 'Le Pied de page a été enregistré avec succès.',
+            ];
         } catch (\Exception $e) {
-            # Enregistrer le message d'erreur dans les logs
-            Log::error('Une erreur est survenue dans le modèle Pied page: ' . $e->getMessage());
+            Log::error('Une erreur est survenue dans le modèle Piedpage: ' . $e->getMessage());
 
-            # Retourner le message d'erreur
             return [
                 'status' => false,
-                'message' => 'Une erreur est survenue dans le model Pied page. Veuillez consulter l\'administrateur pour plus d\'informations. '
+                'message' => 'Une erreur est survenue. Veuillez contacter l\'administrateur.',
             ];
         }
     }

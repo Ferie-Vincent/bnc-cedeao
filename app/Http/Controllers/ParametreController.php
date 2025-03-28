@@ -11,86 +11,81 @@ use Illuminate\Support\Facades\Log;
 
 class ParametreController extends Controller
 {
-    //
+    /**
+     * Affiche les paramètres généraux.
+     */
     public function index()
     {
-        $typeFlashInfos = TypeFlashInfos::allTypeFlashInfos();
-        $thematiques = ThematiqueProjet::allThematique();
-        $categorieDocuments = CategorieDocument::allCategorie();
-        $typeCategorieDocuments =  TypeDeCategorieDocument::allTypeCategorieDocument();
-        return view('admin.parametre', compact('typeFlashInfos', 'thematiques', 'categorieDocuments', 'typeCategorieDocuments'));
+        try {
+            $typeFlashInfos = TypeFlashInfos::allTypeFlashInfos() ?? [];
+            $thematiques = ThematiqueProjet::allThematique() ?? [];
+            $categorieDocuments = CategorieDocument::allCategorie() ?? [];
+            $typeCategorieDocuments = TypeDeCategorieDocument::allTypeCategorieDocument() ?? [];
+
+            return view('admin.parametre', compact('typeFlashInfos', 'thematiques', 'categorieDocuments', 'typeCategorieDocuments'));
+        } catch (\Exception $e) {
+            Log::error('Erreur lors de la récupération des paramètres : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Impossible de charger les paramètres.');
+        }
     }
 
-    #Flashs infos
+    /**
+     * Gestion des types de Flash Infos (Ajout, modification, suppression).
+     */
     public function TypeFlashInfos(Request $request)
     {
         try {
-            #Intencions la methode pour le traitement
+            $request->validate([
+                'nom' => 'required|string|max:255',
+                'description' => 'nullable|string',
+            ]);
+
             $typeFlashInfo = TypeFlashInfos::saveUpdateDeleteTypeFlashInfo($request);
 
-            #Gestion d'erreur
-            if ($typeFlashInfo['status'] == true) {
-                # Success...
-                return redirect()->back()->with('success', $typeFlashInfo['message']);
-            } else {
-
-                return redirect()->back()->with('error', $typeFlashInfo['message']);
-            }
+            return redirect()->back()->with($typeFlashInfo['status'] ? 'success' : 'error', $typeFlashInfo['message']);
         } catch (\Exception $e) {
-            # Enregistrer le message d'erreur dans les logs
-            Log::error('Une erreur est survenue dans le controler parametre Type Flash Info: ' . $e->getMessage());
-
-            #Message error
-            return redirect()->back()->with('error', 'Une erreur est survenue dans le controler parametre Type Flash Info.');
+            Log::error('Erreur dans le contrôleur paramètre Type Flash Info : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur est survenue dans le contrôleur paramètre Type Flash Info.');
         }
     }
-    
-    
-    #Projets Thématique
-    public function PojetThematique(Request $request)
+
+    /**
+     * Gestion des Thématiques de Projet (Ajout, modification, suppression).
+     */
+    public function ProjetThematique(Request $request)
     {
         try {
-            #Intencions la methode pour le traitement
+            $request->validate([
+                'nom' => 'required|string|max:255',
+                'description' => 'nullable|string',
+            ]);
+
             $thematique = ThematiqueProjet::saveUpdateDeleteThematique($request);
 
-            #Gestion d'erreur
-            if ($thematique['status'] == true) {
-                # Success...
-                return redirect()->back()->with('success', $thematique['message']);
-            } else {
-
-                return redirect()->back()->with('error', $thematique['message']);
-            }
+            return redirect()->back()->with($thematique['status'] ? 'success' : 'error', $thematique['message']);
         } catch (\Exception $e) {
-            # Enregistrer le message d'erreur dans les logs
-            Log::error('Une erreur est survenue dans le controler parametre projet thématique: ' . $e->getMessage());
-
-            #Message error
-            return redirect()->back()->with('error', 'Une erreur est survenue dans le controler parametre projet thématique.');
+            Log::error('Erreur dans le contrôleur paramètre Projet Thématique : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur est survenue dans le contrôleur paramètre Projet Thématique.');
         }
     }
-    
-    #Documentation
+
+    /**
+     * Gestion des Types de Catégories de Document (Ajout, modification, suppression).
+     */
     public function TypeCategorieDocument(Request $request)
     {
         try {
-            #Intencions la methode pour le traitement
+            $request->validate([
+                'nom' => 'required|string|max:255',
+                'description' => 'nullable|string',
+            ]);
+
             $typeCategorieDocument = TypeDeCategorieDocument::saveUpdateDeleteTypeCategorieDocument($request);
 
-            #Gestion d'erreur
-            if ($typeCategorieDocument['status'] == true) {
-                # Success...
-                return redirect()->back()->with('success', $typeCategorieDocument['message']);
-            } else {
-
-                return redirect()->back()->with('error', $typeCategorieDocument['message']);
-            }
+            return redirect()->back()->with($typeCategorieDocument['status'] ? 'success' : 'error', $typeCategorieDocument['message']);
         } catch (\Exception $e) {
-            # Enregistrer le message d'erreur dans les logs
-            Log::error('Une erreur est survenue dans le controler parametre documentation: ' . $e->getMessage());
-
-            #Message error
-            return redirect()->back()->with('error', 'Une erreur est survenue dans le controler paramettre documentation.');
+            Log::error('Erreur dans le contrôleur paramètre Documentation : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur est survenue dans le contrôleur paramètre Documentation.');
         }
     }
 }

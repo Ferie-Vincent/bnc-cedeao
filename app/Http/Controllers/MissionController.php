@@ -6,35 +6,42 @@ use App\Models\Mission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-
 class MissionController extends Controller
 {
-    //
-    public function Mission(){
-        $missions = Mission::allMission();
-        return view('admin.mission', compact('missions'));
+    /**
+     * Affiche la liste des missions.
+     */
+    public function Mission()
+    {
+        try {
+            $missions = Mission::allMission() ?? [];
+            return view('admin.mission', compact('missions'));
+        } catch (\Exception $e) {
+            Log::error('Erreur lors de la récupération des missions : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Impossible de récupérer les missions.');
+        }
     }
 
-    #Plan Stratégique
-    public function PlanStrategies(Request $request){
+    /**
+     * Gère la création, mise à jour ou suppression d'un plan stratégique.
+     */
+    public function PlanStrategies(Request $request)
+    {
         try {
-            #Intencions la methode pour le traitement
+            // Validation des données reçues
+            $request->validate([
+                'titre' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'date' => 'required|date',
+            ]);
+
+            // Traitement de la mission
             $planStrategie = Mission::saveUpdateDeleteMission($request);
 
-            #Gestion d'erreur
-            if ($planStrategie['status'] == true) {
-                # Success...
-                return redirect()->back()->with('success', $planStrategie['message']);
-            } else {
-
-                return redirect()->back()->with('error', $planStrategie['message']);
-            }
+            return redirect()->back()->with($planStrategie['status'] ? 'success' : 'error', $planStrategie['message']);
         } catch (\Exception $e) {
-            # Enregistrer le message d'erreur dans les logs
-            Log::error('Une erreur est survenue dans le controler Mission: ' . $e->getMessage());
-
-            #Message error
-            return redirect()->back()->with('error', 'Une erreur est survenue dans le controler Mission.');
+            Log::error('Erreur dans le contrôleur Mission : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur est survenue dans le contrôleur Mission.');
         }
     }
 }

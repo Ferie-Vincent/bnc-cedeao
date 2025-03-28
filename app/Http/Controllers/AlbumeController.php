@@ -8,33 +8,40 @@ use Illuminate\Support\Facades\Log;
 
 class AlbumeController extends Controller
 {
-    //
-    public function Albume(){
-
-        $albums = Album::allAlbums();
-        return view('admin.album', compact('albums'));
+    /**
+     * Affiche la liste des albums.
+     */
+    public function Albume()
+    {
+        try {
+            $albums = Album::allAlbums() ?? [];
+            return view('admin.album', compact('albums'));
+        } catch (\Exception $e) {
+            Log::error('Erreur lors de la récupération des albums : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Impossible de récupérer les albums.');
+        }
     }
 
-     #Albums
-     public function albumes(Request $request){
+    /**
+     * Gère la création, mise à jour ou suppression d'un album.
+     */
+    public function albumes(Request $request)
+    {
         try {
-            #Intencions la methode pour le traitement
+            // Validation des données reçues
+            $request->validate([
+                'titre' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'date' => 'required|date',
+            ]);
+
+            // Traitement de l'album
             $album = Album::saveUpdateDeleteAlbum($request);
 
-            #Gestion d'erreur
-            if ($album['status'] == true) {
-                # Success...
-                return redirect()->back()->with('success', $album['message']);
-            } else {
-
-                return redirect()->back()->with('error', $album['message']);
-            }
+            return redirect()->back()->with($album['status'] ? 'success' : 'error', $album['message']);
         } catch (\Exception $e) {
-            # Enregistrer le message d'erreur dans les logs
-            Log::error('Une erreur est survenue dans le controler album: ' . $e->getMessage());
-
-            #Message error
-            return redirect()->back()->with('error', 'Une erreur est survenue dans le controler album.');
+            Log::error('Erreur dans le contrôleur Album : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur est survenue dans le contrôleur Album.');
         }
     }
 }
