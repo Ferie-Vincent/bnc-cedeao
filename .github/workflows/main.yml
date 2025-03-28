@@ -61,18 +61,18 @@ jobs:
           DB_CONNECTION: mysql
           DB_HOST: localhost
           DB_PORT: 3306
-          DB_DATABASE: u928962285_bnc
-          DB_USERNAME: u928962285_user_bnc
-          DB_PASSWORD: '&RN&3TT;#D0n'
+          DB_DATABASE: ${{ secrets.DATABASE_NAME }}
+          DB_USERNAME: ${{ secrets.DATABASE_USER }}
+          DB_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
 
       - name: Deploy to FTP Server
         uses: SamKirkland/FTP-Deploy-Action@4.3.1
         with:
-          server: 46.202.172.253
+          server: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: ../domains/bureaunationalcedeao-ci.org/public_html/
+          server-dir: ${{ secrets.SERVER_DIR }}
           exclude: |
             **/.git*
             **/.git*/**
