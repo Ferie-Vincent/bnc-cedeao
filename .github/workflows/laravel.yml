@@ -39,14 +39,6 @@ jobs:
 
       - name: Generate Laravel Key
         run: php artisan key:generate
-        env:
-          APP_ENV: production
-          DB_CONNECTION: mysql
-          DB_HOST: localhost
-          DB_PORT: 3306
-          DB_DATABASE: ${{ secrets.DATABASE_NAME }}
-          DB_USERNAME: ${{ secrets.DATABASE_USER }}
-          DB_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
 
       - name: Deploy to FTP Server
         uses: SamKirkland/FTP-Deploy-Action@4.3.1
