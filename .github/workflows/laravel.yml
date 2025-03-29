@@ -34,10 +34,7 @@ jobs:
         run: npm run build
 
       - name: Set Directory Permissions
-        run: 
-          chmod -R 777 storage bootstrap/cache
-          chmod -R 775 public/storage
-          chmod -R 775 public/uploads
+        run: chmod -R 777 storage bootstrap/cache
 
       - name: Copy .env file
         run: |
