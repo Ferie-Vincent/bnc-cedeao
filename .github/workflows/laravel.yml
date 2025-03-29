@@ -50,9 +50,9 @@ jobs:
           echo "DB_CONNECTION=mysql" >> .env
           echo "DB_HOST=localhost" >> .env
           echo "DB_PORT=3306" >> .env
-          echo "DB_DATABASE=u928962285_bnc" >> .env
-          echo "DB_USERNAME=u928962285_user_bnc" >> .env
-          echo "DB_PASSWORD='&RN&3TT;#D0n'" >> .env
+          echo "DB_DATABASE=u928962285_bnc2" >> .env
+          echo "DB_USERNAME=u928962285_user_bnc2" >> .env
+          echo "DB_PASSWORD='*J>JQz@Zq2'" >> .env
 
       - name: Generate Laravel Key
         run: php artisan key:generate
@@ -61,9 +61,9 @@ jobs:
           DB_CONNECTION: mysql
           DB_HOST: localhost
           DB_PORT: 3306
-          DB_DATABASE: u928962285_bnc
-          DB_USERNAME: u928962285_user_bnc
-          DB_PASSWORD: '&RN&3TT;#D0n'
+          DB_DATABASE: u928962285_bnc2
+          DB_USERNAME: u928962285_user_bnc2
+          DB_PASSWORD: '*J>JQz@Zq2'
 
       - name: Deploy to FTP Server
         uses: SamKirkland/FTP-Deploy-Action@4.3.1
