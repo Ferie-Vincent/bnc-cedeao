@@ -4,19 +4,19 @@
         <h3 class="widget-title">Categories</h3>
         <ul>
         <li class="cat-item">
-                <a href="https://ecowas.int/a-propos-de-la-cedeao/?lang=fr">À propos de la CEDEAO</a>
+                <a href="https://ecowas.int/a-propos-de-la-cedeao/?lang=fr" target="_blank">À propos de la CEDEAO</a>
             </li>
             <li class="cat-item">
-                <a href="traites-cedeao">Traités</a>
+                <a href="{{ route('traites') }}">Traités</a>
             </li>
-            <li class="cat-item">
+            <!-- <li class="cat-item">
                 <a href="principes-fondamentaux">Principes fondamentaux</a>
-            </li>
+            </li> -->
             <li class="cat-item">
                 <a href="#">Principes fondamentaux</a>
             </li>
             <li class="cat-item">
-                <a href="#">Structure</a>
+                <a href="{{ route('bureau') }}">Structure</a>
             </li>
         </ul>
     </div>
@@ -27,7 +27,7 @@
         <h3 class="widget-title">Le Ministre de Tutelle</h3>
         <ul>
             <li>
-                <img src="{{asset('assets/images/people/kl.png')}}" alt="" class="rounded shadow">
+                <img src="{{asset('assets/images/people/WA.png')}}" alt="" class="rounded shadow">
                 <h3 style="text-align:center; margin-top: 5%;">S.E.M. WAUTABOUNA OUATTARA</h3>
             </li>
         </ul>
@@ -40,7 +40,7 @@
         <ul>
             <li>
                 <img src="{{asset('assets/images/people/SF.jpg')}}" alt="" class="rounded shadow">
-                <h3 style="text-align:center; margin-top: 5%;">Mme FOLQUET Sandra</h3>
+                <h3 style="text-align:center; margin-top: 5%;">S.E.Mme FOLQUET Sandra</h3>
             </li>
         </ul>
     </div>

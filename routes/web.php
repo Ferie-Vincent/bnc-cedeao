@@ -163,41 +163,41 @@ Route::middleware(Authenticate::class)->group(function () {
 });
 
 Route::controller(SiteController::class)->group(function () {
-    Route::get('/','home');
-    Route::get('/bureau', 'bureau');
-    Route::get('/planStrategique', 'planStrategique');
-    Route::get('/services', 'services');
-    Route::get('/projects', 'projects');
-    Route::get('/albums', 'albums');
+    Route::get('/','home')->name('home');
+    Route::get('/bureau', 'bureau')->name('bureau');
+    Route::get('/planStrategique', 'planStrategique')->name('planStrategique');
+    Route::get('/services', 'services')->name('services');
+    Route::get('/projects', 'projects')->name('projects');
+    Route::get('/albums', 'albums')->name('albums');
  
-    Route::get('/archives', 'archives');
-    Route::get('/statistiques', 'statistiques');
-    Route::get('/contact', 'contact');
-    Route::get('/articles/{id}', 'article');
+    Route::get('/archives', 'archives')->name('archives');
+    Route::get('/statistiques', 'statistiques')->name('statistiques');
+    Route::get('/contact', 'contact')->name('contact');
+    Route::get('/articles/{id}', 'article')->name('article');
 
-    Route::get('/tous_les_articles/{id_tags}', 'lesarticles');
-    Route::get('/les_avis_publications', 'lespublication');
-    Route::get('/les_appels_offres', 'lesapplesaoffres');
+    Route::get('/tous_les_articles/{id_tags}', 'lesarticles')->name('lesarticles');
+    Route::get('/les_avis_publications', 'lespublication')->name('lespublication');
+    Route::get('/les_appels_offres', 'lesapplesaoffres')->name('lesapplesaoffres');
 
     // save messages contact
-    Route::post('/saveMessage','saveMessage');
+    Route::post('/saveMessage','saveMessage')->name('saveMessage');
 
     // commission
-    Route::get('/commission', 'Commission');
+    Route::get('/commission', 'Commission')->name('commission');
 
     // all documents
-    Route::get('/documents/traite', 'documentTraite');
-    Route::get('/documents/journaux', 'documentJournaux');
-    Route::get('/documents/communiques', 'documentCommunique');
-    Route::get('/documents/texte/juridique', 'documentTexteJuridique');
-    Route::get('/documents/politique', 'documentPolitique');
-    Route::get('/documents/reglements', 'documentReglement');
+    Route::get('/documents/traite', 'documentTraite')->name('traites');
+    Route::get('/documents/journaux', 'documentJournaux')->name('journaux');
+    Route::get('/documents/communiques', 'documentCommunique')->name('communiques');
+    Route::get('/documents/texte/juridique', 'documentTexteJuridique')->name('texte-juridique');
+    Route::get('/documents/politique', 'documentPolitique')->name('politique');
+    Route::get('/documents/reglements', 'documentReglement')->name('reglements');
 
-    Route::get('/passation/marches', 'passationMarchee');
-    Route::get('/carrieres', 'carrieres');
+    Route::get('/passation/marches', 'passationMarchee')->name('passationMarchee');
+    Route::get('/carrieres', 'carrieres')->name('carrieres');
 
     // save mail newletter  saveMailNewletter
-    Route::post('/saveMailNewletter','saveMailNewletter');
+    Route::post('/saveMailNewletter','saveMailNewletter')->name('saveMailNewletter');
 
 
 });
