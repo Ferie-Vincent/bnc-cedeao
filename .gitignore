@@ -7,6 +7,10 @@
 .env.backup
 .phpunit.result.cache
 .htaccess
+storage/.htaccess
+storage/app/public/.htaccess
+storage/app/public/uploads/.htaccess
+/config/app.php
 docker-compose.override.yml
 Homestead.json
 Homestead.yaml
