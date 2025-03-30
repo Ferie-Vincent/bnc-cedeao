@@ -73,7 +73,7 @@
 
                                 <div class="entry-media">
 
-                                    <a href="#" class="image-post item-overlay ">
+                                    <a href="articles/{{ $item->id }}" class="image-post item-overlay ">
                                         <img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="" />
                                     </a>
 
@@ -109,8 +109,7 @@
                     </div>
                     <!--/ .post-area-->
 
-                    <span class="learn-more"> <a href="tous_les_articles/1" style="font-style: italic;">(Voir tous les articles à la
-                            une)</a> </span>
+                    <span class="learn-more"> <a href="tous_les_articles/1" style="font-style: italic;">(Voir tous les articles à la une)</a> </span>
 
                 </div>
 
@@ -311,7 +310,7 @@
 
 
 
-    @include ('layouts.sidebar');
+    @include ('layouts.sidebar')
 
 </main>
 @endsection
