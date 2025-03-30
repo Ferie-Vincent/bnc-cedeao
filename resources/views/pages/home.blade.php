@@ -78,7 +78,7 @@
                                     </a>
 
                                     <header class="entry-header">
-                                        <h3 class="entry-title"><a href="#">{!! Str::limit($item->title, 30,) !!}</a></h3>
+                                        <h3 class="entry-title"><a href="articles/{{ $item->id }}">{!! Str::limit($item->title, 30,) !!}</a></h3>
                                     </header>
 
                                 </div>
