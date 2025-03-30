@@ -178,9 +178,9 @@
                 {{$key +1}}
               </td>
               <td>
-                
+
                 <span class="badge badge-danger" style="background-color: '{{$flash['couleur']}}; padding: 3px; color:#fff">{{$flash['type']}}</span>
-                
+
               </td>
               <td>
               {{ Str::limit(strip_tags($flash['corpsTexte']), 200) }}
@@ -357,7 +357,7 @@
                 {!! Str::limit($avis['contenu'], 100) !!}
               </td>
               <td class="text-center">
-                <a href="{{ asset(env('IMAGES_PATH')) }}/{{$avis['fichierPDF'] }}">
+                <a href="{{ asset(env('IMAGE_PATH')) }}/{{$avis['fichierPDF'] }}">
                   <img src="../assets/images/icon/pdf.png" alt="AVIS DE PUBLICATION" width="50%">
                 </a>
               </td>
@@ -450,7 +450,7 @@
                 {!! Str::limit($offre['contenu'], 100) !!}
               </td>
               <td class="text-center">
-                <a href="{{ asset(env('IMAGES_PATH')) }}/{{$offre['fichierPDF'] }}">
+                <a href="{{ asset(env('IMAGE_PATH')) }}/{{$offre['fichierPDF'] }}">
                   <img src="../assets/images/icon/pdf.png" alt="APPEL D'OFFRES" width="50%">
                 </a>
               </td>
@@ -725,7 +725,7 @@
                 {!! Str::limit($magazine['contenu'], 200) !!}
               </td>
               <td class="text-center">
-                <a href="{{ asset(env('IMAGES_PATH')) }}/{{$magazine['fichierPDF'] }}">
+                <a href="{{ asset(env('IMAGE_PATH')) }}/{{$magazine['fichierPDF'] }}">
                   <img src="../assets/images/icon/pdf.png" alt="" width="50%">
                 </a>
               </td>
@@ -859,8 +859,8 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-body text-center">
-            <img src="{{ asset(env('IMAGES_PATH')) }}/{{$actualite['image']}}" alt="" class="img-fluid rounded shadow" style="margin-top: -10%; z-index: 999; max-width: 300px!important; height: auto;">
-            <!-- <img src="{{ asset(env('IMAGES_PATH')) }}/{{$actualite['image']}}" alt="" class="img-fluid rounded shadow" style="margin-top: -10%; z-index: 999" width="400px!important" height="400!important"> -->
+            <img src="{{ asset(env('IMAGE_PATH')) }}/{{$actualite['image']}}" alt="" class="img-fluid rounded shadow" style="margin-top: -10%; z-index: 999; max-width: 300px!important; height: auto;">
+            <!-- <img src="{{ asset(env('IMAGE_PATH')) }}/{{$actualite['image']}}" alt="" class="img-fluid rounded shadow" style="margin-top: -10%; z-index: 999" width="400px!important" height="400!important"> -->
             <!-- <img src="{{asset('storage/actualites/' . $actualite['image'])}}" alt="" class="img-fluid rounded shadow" style="margin-top: -10%; z-index: 999" width="500"> -->
 
             <hr class="w-50 my-4">
@@ -962,7 +962,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="image">Image <sup class="text-danger">*</sup> <img src="{{ asset(env('IMAGES_PATH')) }}/{{$actualite['image']}}" alt="ok" width="05%"></label>
+                  <label for="image">Image <sup class="text-danger">*</sup> <img src="{{ asset(env('IMAGE_PATH')) }}/{{$actualite['image']}}" alt="ok" width="05%"></label>
                   <div class="custom-file">
                     <input type="file" class="custom-file-input" id="image" name="image" accept="image/*,.png,.jpg,.jpeg,.gif">
                     <label class="custom-file-label" for="image">Choississez une image</label>
@@ -1892,7 +1892,7 @@
 
 
             <p>Fichier joint
-              <a href="{{ asset(env('IMAGES_PATH')) }}/{{$avis['fichierPDF'] }}">
+              <a href="{{ asset(env('IMAGE_PATH')) }}/{{$avis['fichierPDF'] }}">
                 <img src="../assets/images/icon/pdf.png" alt="AVIS DE PUBLICATION" width="10%">
               </a>
             </p>
@@ -2102,7 +2102,7 @@
 
 
             <p>Fichier joint
-              <a href="{{ asset(env('IMAGES_PATH')) }}/{{$offre['fichierPDF'] }}">
+              <a href="{{ asset(env('IMAGE_PATH')) }}/{{$offre['fichierPDF'] }}">
                 <img src="../assets/images/icon/pdf.png" alt="APPEL D'OFFRES" width="10%">
               </a>
             </p>
@@ -2518,7 +2518,7 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-body text-center">
-            <img src="{{ asset(env('IMAGES_PATH')) }}/{{$even['image'] }}" alt="" class="img-fluid rounded shadow" style="margin-top: -20%; z-index: 999; max-width: 300px!important; height: auto;"">
+            <img src="{{ asset(env('IMAGE_PATH')) }}/{{$even['image'] }}" alt="" class="img-fluid rounded shadow" style="margin-top: -20%; z-index: 999; max-width: 300px!important; height: auto;"">
 
             <hr class=" w-50 my-4">
 
@@ -2685,7 +2685,7 @@
 
 
             <p>Fichier joint
-              <a href="{{ asset(env('IMAGES_PATH')) }}/{{$magazine['fichierPDF'] }}">
+              <a href="{{ asset(env('IMAGE_PATH')) }}/{{$magazine['fichierPDF'] }}">
                 <img src="../assets/images/icon/pdf.png" alt="" width="10%">
               </a>
             </p>
@@ -2880,7 +2880,7 @@
     <script src="{{asset('admin/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
       <!-- Summernote -->
     <script src="{{asset('admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
-     
+
    <script>
       $(function() {
            // // Summernote
@@ -2890,49 +2890,49 @@
            $('#offre').summernote()
            $('#recrutement').summernote()
            $('#magazine').summernote()
-   
+
            // Actualites
            @foreach($actualites as $actualite)
            $('#summernote-{{$actualite['id']}}').summernote({
                // Options de configuration si nécessaire
            });
            @endforeach
-           
+
            // flash
            @foreach($flashInfos as $flash)
            $('#corpsTexte-{{$flash['id']}}').summernote({
                // Options de configuration si nécessaire
            });
            @endforeach
-           
+
            // Avis Publications
            @foreach($avisPublications as $avis)
            $('#avis-{{$avis['id']}}').summernote({
                // Options de configuration si nécessaire
            });
            @endforeach
-           
+
            // APPEL D'OFFRES
            @foreach($appelOffres as $offre)
            $('#offre-{{$offre['id']}}').summernote({
                // Options de configuration si nécessaire
            });
            @endforeach
-           
-           // RECRUTEMENT CEDEAO 
+
+           // RECRUTEMENT CEDEAO
            @foreach($recrutements as $recrutement)
            $('#recrutement-{{$recrutement['id']}}').summernote({
                // Options de configuration si nécessaire
            });
            @endforeach
-           
+
            // LE MAGAZINE DE LA CEDEAO
            @foreach($magazines as $magazine)
            $('#magazine-{{$magazine['id']}}').summernote({
                // Options de configuration si nécessaire
            });
            @endforeach
-   
+
            // CodeMirror
            CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
                mode: "htmlmixed",

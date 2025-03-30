@@ -9,7 +9,7 @@
                 <li class="accordion-navigation">
                     <a href="#" class="acc-trigger" data-mode="">{{ $projet['titre'] }} </a>
                     <div class="content">
-                        <img src="{{ asset(env('IMAGES_PATH')) }}/{{$projet['image'] }}" alt="" style="height: auto;">
+                        <img src="{{ asset(env('IMAGE_PATH')) }}/{{$projet['image'] }}" alt="" style="height: auto;">
                         <br><br>
                         {!! $projet['texte'] !!}
                     </div>

@@ -64,7 +64,7 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$projet['titre'] }}</td>
                             <td>
-                                <img src="{{ asset(env('IMAGES_PATH')) }}/{{$projet['image'] }}" alt="" class="rounded shadow" style="max-width: 50px!important; height: auto;">
+                                <img src="{{ asset(env('IMAGE_PATH')) }}/{{$projet['image'] }}" alt="" class="rounded shadow" style="max-width: 50px!important; height: auto;">
                             </td>
                             <td>
                                 <p>{!! Str::limit($projet['texte'], 300) !!}</p>
@@ -197,7 +197,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="image">Image <sup class="text-danger">*</sup> <img src="{{ asset(env('IMAGES_PATH')) }}/{{$projet['image']}}" alt="ok" width="05%"></label>
+                                <label for="image">Image <sup class="text-danger">*</sup> <img src="{{ asset(env('IMAGE_PATH')) }}/{{$projet['image']}}" alt="ok" width="05%"></label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="inputGroupFile01" name="image">
                                     <label class="custom-file-label" for="inputGroupFile01">Choississez une
@@ -236,7 +236,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body text-center">
-                    <img src="{{ asset(env('IMAGES_PATH')) }}/{{$projet['image'] }}" alt="" class="img-fluid rounded shadow" sstyle="margin-top: -10%; z-index: 999; max-width: 300px!important; height: auto;">
+                    <img src="{{ asset(env('IMAGE_PATH')) }}/{{$projet['image'] }}" alt="" class="img-fluid rounded shadow" sstyle="margin-top: -10%; z-index: 999; max-width: 300px!important; height: auto;">
 
                     <hr class="w-50 my-4">
                     <p>

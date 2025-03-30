@@ -267,7 +267,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-body text-center">
-                        <img src="{{ asset(env('IMAGES_PATH')) }}/{{$mission['planStrategie']}}" alt="" class="img-fluid rounded shadow" style="margin-top: -10%; z-index: 999; max-width: 300px!important; height: auto;">
+                        <img src="{{ asset(env('IMAGE_PATH')) }}/{{$mission['planStrategie']}}" alt="" class="img-fluid rounded shadow" style="margin-top: -10%; z-index: 999; max-width: 300px!important; height: auto;">
 
                         <hr class="w-50 my-4">
 
@@ -319,12 +319,12 @@
 
                                 <div class="form-group">
                                     <input type="hidden" name="id" value="{{$mission['id']}}">
-                                    
+
                                     <input type="hidden" name="linkedIn" value="{{ $mission['linkedIn'] }}">
                                     <input type="hidden" name="facebook" value="{{ $mission['facebook'] }}">
                                     <input type="hidden" name="twitter" value="{{ $mission['twitter'] }}">
                                     <input type="hidden" name="youTube" value="{{ $mission['youTube'] }}">
-                                    <label for="image">Image <sup class="text-danger">*</sup> <img src="{{ asset(env('IMAGES_PATH')) }}/{{$mission['planStrategie']}}" alt="ok" width="05%"></label>
+                                    <label for="image">Image <sup class="text-danger">*</sup> <img src="{{ asset(env('IMAGE_PATH')) }}/{{$mission['planStrategie']}}" alt="ok" width="05%"></label>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="image" name="planStrategie" accept="image/*,.png,.jpg,.jpeg,.gif" required>
                                         <label class="custom-file-label" for="image">Choississez une image</label>

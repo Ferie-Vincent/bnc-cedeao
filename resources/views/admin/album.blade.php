@@ -61,12 +61,12 @@
                                 @foreach( json_decode($album->image) as $index => $image)
 
                                 <!-- <div class="col-sm-3">
-                                    <img src="{{ asset(env('IMAGES_PATH')) }}/{{$image}}" class="img-fluid mb-2" alt="black sample" style="max-width: 110px!important; max-height: auto;" />
+                                    <img src="{{ asset(env('IMAGE_PATH')) }}/{{$image}}" class="img-fluid mb-2" alt="black sample" style="max-width: 110px!important; max-height: auto;" />
                                 </div> -->
 
                                 <div class="col-sm-3" x-data="{ isHovered: false }">
                                     <div class="image-container" @mouseover="isHovered = true" @mouseout="isHovered = false">
-                                        <img src="{{ asset(env('IMAGES_PATH')) }}/{{$image}}" class="img-fluid mb-2" alt="black sample" style="max-width: 110px!important; max-height: auto; position: relative;" />
+                                        <img src="{{ asset(env('IMAGE_PATH')) }}/{{$image}}" class="img-fluid mb-2" alt="black sample" style="max-width: 110px!important; max-height: auto; position: relative;" />
                                         <div class="row" x-show="isHovered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center;">
                                             <!-- <div class="col-6">
                                                 <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalUpdateProjet-{{$index}}">
@@ -134,7 +134,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     Êtes-vous sûr de vouloir supprimer cette image ?
-                                                    <img src="{{ asset(env('IMAGES_PATH')) }}/{{$image}}" class="img-fluid mb-2" style="max-width: 50px!important; height: auto;" />
+                                                    <img src="{{ asset(env('IMAGE_PATH')) }}/{{$image}}" class="img-fluid mb-2" style="max-width: 50px!important; height: auto;" />
                                                     <input type="hidden" name="id" value="{{ $album['id'] }}">
                                                     <input type="hidden" name="nom" value="{{ $album['nom'] }}">
                                                     <input type="hidden" name="image" value="{{$image}}">

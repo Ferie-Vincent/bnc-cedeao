@@ -69,7 +69,7 @@
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>
-                                <a href="{{ asset(env('IMAGES_PATH')) }}/{{$document['fichier']}}">
+                                <a href="{{ asset(env('IMAGE_PATH')) }}/{{$document['fichier']}}">
                                     <img src="../assets/images/icon/pdf.png" alt="" width="50%">
                                 </a>
                             </td>
@@ -80,7 +80,7 @@
                                 <p>{{ $document['date'] }}</p>
                             </td>
                             <td width="20%" class="text-center">
-                                <a class="btn btn-primary btn-sm" href="{{ asset(env('IMAGES_PATH')) }}/{{$document['fichier']}}">
+                                <a class="btn btn-primary btn-sm" href="{{ asset(env('IMAGE_PATH')) }}/{{$document['fichier']}}">
                                     <i class="fas fa-download">
                                     </i>
                                 </a>
@@ -102,7 +102,7 @@
             <div class="card-footer clearfix">
                 <ul class="pagination pagination-sm m-0 float-right">
                     <li class="page-item">
-                        
+
                     </li>
                 </ul>
             </div>
@@ -112,7 +112,7 @@
         @endforeach
         <!-- /.Traités -->
 
-    
+
 
     </section>
 
@@ -144,9 +144,9 @@
                                 <div class="form-group">
                                     <label>Catégorie <sup class="text-danger">*</sup> </label>
                                     <input type="text" class="form-control" name="categorie" id="categorie" value="Catégorie" required readonly>
-                            
+
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Type Catégorie <sup class="text-danger">*</sup> </label>
                                     <select class="form-control" name="categorie" required>

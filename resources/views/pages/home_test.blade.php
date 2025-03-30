@@ -13,7 +13,7 @@
                         <div class="post-alternate-3 item post">
                             <div class="entry-media">
                                 <a href="articles/{{ $item->id }}" class="image-post  item-overlay">
-                                    <img src="{{ asset(env('IMAGES_PATH')) }}/{{$item->image}}" alt="">
+                                    <img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="">
                                 </a>
 
                                 <div class="entry-content">
@@ -24,7 +24,7 @@
                                             </a>
                                         </h3>
                                     </header>
-                                
+
                                     <footer class="entry-footer">
                                         <span class="posted-on"><a href="#">{{ $item->date }}</a></span>
                                     </footer>
@@ -84,7 +84,7 @@
                                 <div class="entry-media">
 
                                     <a href="#" class="image-post item-overlay ">
-                                        <img src="{{ asset(env('IMAGES_PATH')) }}/{{$item->image}}" alt="" />
+                                        <img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="" />
                                     </a>
 
                                     <header class="entry-header">
@@ -147,7 +147,7 @@
                                 <div class="entry-media">
 
                                     <a href="#" class="image-post item-overlay ">
-                                        <img src="{{ asset(env('IMAGES_PATH')) }}/{{$item->image}}" alt="" />
+                                        <img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="" />
                                     </a>
 
                                     <header class="entry-header">
@@ -228,7 +228,7 @@
                                 </header>
 
                                 <div class="entry-content">
-                                    
+
                                     <p>
                                         <span>CONTENU </span> :
                                         {!! Str::limit($item->contenu, 200,) !!}
@@ -288,7 +288,7 @@
                                 </header>
 
                                 <div class="entry-content">
-                                    
+
                                     <p>
                                         <span>CONTENU </span> :
                                         {!! Str::limit($item->contenu, 200,) !!}

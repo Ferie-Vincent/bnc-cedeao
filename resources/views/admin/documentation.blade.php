@@ -69,7 +69,7 @@
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>
-                                <a href="{{ asset(env('IMAGES_PATH')) }}/{{$doc['fichier']}}">
+                                <a href="{{ asset(env('IMAGE_PATH')) }}/{{$doc['fichier']}}">
                                     <img src="../assets/images/icon/pdf.png" alt="" width="50%">
                                 </a>
                             </td>
@@ -80,7 +80,7 @@
                                 <p>{{ $doc['date'] }}</p>
                             </td>
                             <td width="30%" class="text-center">
-                                <a class="btn btn-primary btn-sm" href="{{ asset(env('IMAGES_PATH')) }}/{{$doc['fichier']}}">
+                                <a class="btn btn-primary btn-sm" href="{{ asset(env('IMAGE_PATH')) }}/{{$doc['fichier']}}">
                                     <i class="fas fa-download">
                                     </i>
                                 </a>

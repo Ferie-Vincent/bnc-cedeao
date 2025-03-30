@@ -38,7 +38,7 @@
                                     <p>
                                         <div class="right">
                                             <span class="cat-links">
-                                                <a href="{{ asset(env('IMAGES_PATH')) }}/{{$item->fichierPDF }}" download="{{$item->fichierPDF }}" rel="category tag">
+                                                <a href="{{ asset(env('IMAGE_PATH')) }}/{{$item->fichierPDF }}" download="{{$item->fichierPDF }}" rel="category tag">
                                                     <img src="assets/images/icon/pdf.png"  alt="" width="5%">
                                                     Télécharger le fichier...
                                                 </a>
