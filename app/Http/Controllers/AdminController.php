@@ -46,9 +46,10 @@ class AdminController extends Controller
 
     public function Actualite(Request $request)
     {
+        //dd($request->all());
         return $this->handleRequest($request, Actualite::class, [
             'auteur' => 'required', 'appelTitre' => 'required', 'title' => 'required', 'legende' => 'required',
-            'chapeau' => 'required', 'corpsTexte' => 'required', 'date' => 'required|date', 'tags' => 'required'
+            'chapeau' => 'required', 'corpsTexte' => 'required', 'date' => 'required|date', 'tags' => ''
         ], 'saveUpdateDeleteActualites');
     }
 
