@@ -40,7 +40,7 @@
 
         <div class="card-tools">
           <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#modalAddArticle1">
-            <i class="fa fa-plus mr-2" aria-hidden="true"></i> Ajouter une actualité
+            <i class="fa fa-plus mr-2" aria-hidden="true"></i> Ajouter une actualité (1140x670)
           </button>
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
             <i class="fas fa-minus"></i>
