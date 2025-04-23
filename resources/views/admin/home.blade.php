@@ -40,7 +40,7 @@
 
         <div class="card-tools">
           <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#modalAddArticle1">
-            <i class="fa fa-plus mr-2" aria-hidden="true"></i> Ajouter une actualité (1140x670)
+            <i class="fa fa-plus mr-2" aria-hidden="true"></i> Ajouter une actualité 
           </button>
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
             <i class="fas fa-minus"></i>
@@ -829,7 +829,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="image">Image <sup class="text-danger">*</sup> </label>
+                  <label for="image">Image <sup class="text-danger">*</sup> <span class="text-danger">(1140x670)</span></label>
                   <div class="custom-file">
                     <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" accept="image/*,.png,.jpg,.jpeg,.gif">
                     <label class="custom-file-label" for="inputGroupFile01">Choississez une image</label>
