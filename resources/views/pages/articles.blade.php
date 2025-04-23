@@ -22,7 +22,7 @@
 
 					<div class="post border post-classic">
 						<span class="image-post item-overlay">
-							<img src="{{ asset(env('IMAGE_PATH')) }}/{{$article->image}}"  alt=""/>
+							<img src="/storage/app/public/uploads/{{$article->image}}"  alt=""/>
 						</span>
 
 						<div class="entry-content">

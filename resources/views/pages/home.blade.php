@@ -13,8 +13,8 @@
                         <div class="post-alternate-3 item post">
                             <div class="entry-media">
                                 <a href="articles/{{ $item->id }}" class="image-post  item-overlay">
-                                    <img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="">
-                                    <img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="">
+                                    <img src="/storage/app/public/uploads/{{$item->image}}" alt="">
+                                    <!--<img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="" />-->
                                 </a>
 
                                 <div class="entry-content">
@@ -75,7 +75,7 @@
                                 <div class="entry-media">
 
                                     <a href="articles/{{ $item->id }}" class="image-post item-overlay ">
-                                        <img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="" />
+                                        <img src="/storage/app/public/uploads/{{$item->image}}" alt="">
                                     </a>
 
                                     <header class="entry-header">
@@ -116,7 +116,7 @@
 
             </div>
 
-        </div>
+        </div> 
         <!--/ .section -->
 
         <div class="section padding-off columns medium-12 large-12 background-color-off" style="margin-top: 30px !important;">
