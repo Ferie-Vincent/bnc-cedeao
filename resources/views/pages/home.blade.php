@@ -136,7 +136,7 @@
                                 <div class="entry-media">
 
                                     <a href="#" class="image-post item-overlay ">
-                                        <img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="" />
+                                        <img src="/storage/app/public/uploads/{{$item->image}}" alt="" />
                                     </a>
 
                                     <header class="entry-header">
