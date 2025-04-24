@@ -357,7 +357,7 @@
                 {!! Str::limit($avis['contenu'], 100) !!}
               </td>
               <td class="text-center">
-                <a href="{{ asset(env('IMAGE_PATH')) }}/{{$avis['fichierPDF'] }}">
+                <a href="/storage/app/public/uploads/{{$avis['fichierPDF'] }}">
                   <img src="../assets/images/icon/pdf.png" alt="AVIS DE PUBLICATION" width="50%">
                 </a>
               </td>
