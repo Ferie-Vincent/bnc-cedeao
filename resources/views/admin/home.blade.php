@@ -355,7 +355,7 @@
               </td>
               <td>
                 <!--{!! Str::limit($avis['contenu'], 100) !!}-->
-                {!! $avis['contenu'] !!}
+                {{ Str::limit(strip_tags($aviss['contenu']), 50, '...') }}
               </td>
               <td class="text-center">
                 <a href="/storage/app/public/uploads/{{$avis['fichierPDF'] }}">
