@@ -33,7 +33,7 @@
                                         TITRE : {{ $item->titre }}.
                                     </p>
                                     <p>
-                                        CONTENU : {!! $avis['contenu'] !!}
+                                        CONTENU : {!! $item->contenu!!}
                                     </p>
                                     <p>
                                     <div class="right">
