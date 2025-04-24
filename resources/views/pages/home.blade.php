@@ -224,7 +224,7 @@
 
                                     </p>
                                     <p>
-                                        <span>FICHIERS RATTACHÉS</span> : <a href="/storage/app/public/uploads/{{$avis['fichierPDF'] }}" title="Cliquez pour télécharger">
+                                        <span>FICHIERS RATTACHÉS</span> : <a href="/storage/app/public/uploads/{{$item['fichierPDF'] }}" title="Cliquez pour télécharger">
                                             <img src="assets/images/icon/pdf.png" alt="" width="5%">
                                         </a>
                                     </p>
