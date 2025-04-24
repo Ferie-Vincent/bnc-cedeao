@@ -354,7 +354,8 @@
                 {{$avis['date']}}
               </td>
               <td>
-                {!! Str::limit($avis['contenu'], 100) !!}
+                <!--{!! Str::limit($avis['contenu'], 100) !!}-->
+                Bonjour
               </td>
               <td class="text-center">
                 <a href="/storage/app/public/uploads/{{$avis['fichierPDF'] }}">
