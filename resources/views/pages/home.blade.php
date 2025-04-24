@@ -220,11 +220,11 @@
 
                                     <p>
                                         <span>CONTENU </span> :
-                                        {!! Str::limit($item->contenu, 200,) !!}
+                                        {{ Str::limit(strip_tags($avis['contenu']), 50, '...') }}
 
                                     </p>
                                     <p>
-                                        <span>FICHIERS RATTACHÉS</span> : <a href="" title="Cliquez pour télécharger">
+                                        <span>FICHIERS RATTACHÉS</span> : <a href="/storage/app/public/uploads/{{$avis['fichierPDF'] }}" title="Cliquez pour télécharger">
                                             <img src="assets/images/icon/pdf.png" alt="" width="5%">
                                         </a>
                                     </p>
