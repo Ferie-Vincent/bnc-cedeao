@@ -220,7 +220,7 @@
 
                                     <p>
                                         <span>CONTENU </span> :
-                                        {{ Str::limit(strip_tags($avis['contenu']), 50, '...') }}
+                                        {{ Str::limit(strip_tags($item->contenu), 50, '...') }}
 
                                     </p>
                                     <p>
