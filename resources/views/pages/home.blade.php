@@ -135,7 +135,7 @@
 
                                 <div class="entry-media">
 
-                                    <a href="#" class="image-post item-overlay ">
+                                    <a href="articles/{{$item->id}}" class="image-post item-overlay ">
                                         <img src="/storage/app/public/uploads/{{$item->image}}" alt="" />
                                     </a>
 
