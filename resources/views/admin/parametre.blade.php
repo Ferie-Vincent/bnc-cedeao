@@ -30,7 +30,6 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
@@ -756,7 +755,7 @@
 <div class="modal fade" id="modalUpdateProjet-{{ $thematique['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form action="/projet_thematique" method="POST" enctype="multipart/form-data">
+            <form action="/update_projet_thematique" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 

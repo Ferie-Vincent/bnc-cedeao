@@ -125,7 +125,7 @@
                                             Population: <br>
                                         <h2>
                                             <span style="font-weight: bold; color: orange">
-                                                25 millions d'habitants
+                                                {{ $cotedivoire->population ?? '' }}
                                             </span>
                                         </h2>
 

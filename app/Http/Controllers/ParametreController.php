@@ -52,18 +52,46 @@ class ParametreController extends Controller
     /**
      * Gestion des Thématiques de Projet (Ajout, modification, suppression).
      */
-    public function ProjetThematique(Request $request)
+    public function PojetThematique(Request $request)
     {
+        //dd($request->all());
         try {
-            $request->validate([
-                'nom' => 'required|string|max:255',
-                'description' => 'nullable|string',
-            ]);
 
-            $thematique = ThematiqueProjet::saveUpdateDeleteThematique($request);
+            $thematique = ThematiqueProjet::handle($request->all(), 'create');
 
             return redirect()->back()->with($thematique['status'] ? 'success' : 'error', $thematique['message']);
         } catch (\Exception $e) {
+            dd($e);
+            Log::error('Erreur dans le contrôleur paramètre Projet Thématique : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur est survenue dans le contrôleur paramètre Projet Thématique.');
+        }
+    }
+
+    public function UpdatePojetThematique(Request $request)
+    {
+        //dd($request->all());
+        try {
+
+            $thematique = ThematiqueProjet::handle($request->all(), 'update');
+
+            return redirect()->back()->with($thematique['status'] ? 'success' : 'error', $thematique['message']);
+        } catch (\Exception $e) {
+            dd($e);
+            Log::error('Erreur dans le contrôleur paramètre Projet Thématique : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur est survenue dans le contrôleur paramètre Projet Thématique.');
+        }
+    }
+
+    public function DeletPojetThematique(Request $request)
+    {
+        //dd($request->all());
+        try {
+
+            $thematique = ThematiqueProjet::handle($request->all(), 'archive');
+
+            return redirect()->back()->with($thematique['status'] ? 'success' : 'error', $thematique['message']);
+        } catch (\Exception $e) {
+            dd($e);
             Log::error('Erreur dans le contrôleur paramètre Projet Thématique : ' . $e->getMessage());
             return redirect()->back()->with('error', 'Une erreur est survenue dans le contrôleur paramètre Projet Thématique.');
         }

@@ -28,7 +28,7 @@
         <ul>
             <li>
                 <img src="{{asset('assets/images/people/WA.png')}}" alt="" class="rounded shadow">
-                <h3 style="text-align:center; margin-top: 5%;">S.E.M. WAUTABOUNA OUATTARA</h3>
+                <h3 style="text-align:center; margin-top: 5%;">S.E.M. Adama DOSSO</h3>
             </li>
         </ul>
     </div>

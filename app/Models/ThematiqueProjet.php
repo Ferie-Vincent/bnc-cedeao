@@ -15,81 +15,106 @@ class ThematiqueProjet extends Model
         'archive',
     ];
 
-    #Selectionner toutes les données du projet thématique
+    /**
+     * Récupérer toutes les thématiques non archivées
+     */
     public static function allThematique()
     {
-        $thematiques = ThematiqueProjet::where('archive', false)->get();
-
-        return $thematiques;
+        return static::where('archive', false)->get();
     }
 
-    #Save || Update || Delete
-    public static function saveUpdateDeleteThematique($request)
+    /**
+     * Gérer la création / mise à jour / archivage d'une thématique
+     *
+     * @param  array  $data   (id?, titre?, archive?)
+     * @param  string $action 'create' | 'update' | 'archive'
+     * @return array
+     */
+    public static function handle(array $data, string $action): array
     {
         try {
+            switch ($action) {
+                // 1) CRÉATION
+                case 'create':
+                    $thematique = new static();
+                    $thematique->titre   = $data['titre'] ?? null;
+                    $thematique->archive = false;
+                    $thematique->save();
 
-            #Archive
-            if (isset($request->id) && isset($request->archive) == true) {
-                # Archive
+                    return [
+                        'status'  => true,
+                        'message' => 'La thématique a été enregistrée avec succès.',
+                    ];
 
-                $thematique = ThematiqueProjet::find($request->id);
+                // 2) MISE À JOUR
+                case 'update':
+                    if (empty($data['id'])) {
+                        return [
+                            'status'  => false,
+                            'message' => 'ID manquant pour la mise à jour de la thématique.',
+                        ];
+                    }
 
-                if ($thematique) {
+                    $thematique = static::find($data['id']);
+
+                    if (!$thematique) {
+                        return [
+                            'status'  => false,
+                            'message' => 'La thématique à mettre à jour est introuvable.',
+                        ];
+                    }
+
+                    $thematique->titre   = $data['titre'] ?? $thematique->titre;
+                    $thematique->archive = false;
+                    $thematique->save();
+
+                    return [
+                        'status'  => true,
+                        'message' => 'La thématique a été mise à jour avec succès.',
+                    ];
+
+                // 3) ARCHIVAGE
+                case 'archive':
+                    if (empty($data['id'])) {
+                        return [
+                            'status'  => false,
+                            'message' => 'ID manquant pour l\'archivage de la thématique.',
+                        ];
+                    }
+
+                    $thematique = static::find($data['id']);
+
+                    if (!$thematique) {
+                        return [
+                            'status'  => false,
+                            'message' => 'La thématique à archiver est introuvable.',
+                        ];
+                    }
+
                     $thematique->archive = true;
                     $thematique->save();
 
                     return [
-                        'status' => true,
-                        'message' => 'La Thematique a été archivé avec succès.',
+                        'status'  => true,
+                        'message' => 'La thématique a été archivée avec succès.',
                     ];
-                } else {
+
+                default:
                     return [
-                        'status' => false,
-                        'message' => 'La Thematique non trouvé.',
+                        'status'  => false,
+                        'message' => 'Action non reconnue pour la gestion des thématiques.',
                     ];
-                }
             }
 
-            #Save
-            if (!isset($request->id)) {
+        } catch (\Throwable $e) {
 
-                $thematique = new ThematiqueProjet();
+            Log::error('Erreur dans le modèle ThematiqueProjet : ' . $e->getMessage(), [
+                'trace' => $e->getTraceAsString(),
+            ]);
 
-                $thematique->titre = $request->titre;
-                $thematique->archive = false;
-
-                $thematique->save();
-
-                return [
-                    'status' => true,
-                    'message' => 'La Thematique a été traité enregistré'
-                ];
-            }
-
-            #Update
-            if (isset($request->id)) {
-
-                $id = $request->id;
-                $thematique = ThematiqueProjet::where('id', $id)->first();
-
-                $thematique->titre = $request->titre;
-                $thematique->archive = false;
-
-                $thematique->save();
-
-                return [
-                    'status' => true,
-                    'message' => 'La Thematique a été traité mise à jour avec succès.'
-                ];
-            }
-        } catch (\Exception $e) {
-            # Enregistrer le message d'erreur dans les logs
-            Log::error('Une erreur est survenue dans le modèle la Thematique projet: ' . $e->getMessage());
-
-            # Retourner le message d'erreur
             return [
-                'status' => false,
-                'message' => 'Une erreur est survenue dans le model Thematique projet. Veuillez consulter l\'administrateur pour plus d\'informations. '
+                'status'  => false,
+                'message' => 'Une erreur est survenue dans le modèle ThematiqueProjet. Veuillez contacter l\'administrateur.',
             ];
         }
     }

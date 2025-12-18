@@ -151,8 +151,8 @@ Route::middleware(Authenticate::class)->group(function () {
         
         // Projet Thématique
         Route::post('/projet_thematique', 'PojetThematique');
-        Route::put('/projet_thematique', 'PojetThematique');
-        Route::delete('/archive_projet_thematique', 'PojetThematique');
+        Route::put('/update_projet_thematique', 'UpdatePojetThematique');
+        Route::delete('/archive_projet_thematique', 'DeletPojetThematique');
         
         // Documentation
         Route::post('/type_categorie_document', 'TypeCategorieDocument');

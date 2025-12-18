@@ -40,7 +40,7 @@
 
         <div class="card-tools">
           <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#modalAddArticle1">
-            <i class="fa fa-plus mr-2" aria-hidden="true"></i> Ajouter une actualité
+            <i class="fa fa-plus mr-2" aria-hidden="true"></i> Ajouter une actualité 
           </button>
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
             <i class="fas fa-minus"></i>
@@ -354,10 +354,11 @@
                 {{$avis['date']}}
               </td>
               <td>
-                {!! Str::limit($avis['contenu'], 100) !!}
+                <!--{!! Str::limit($avis['contenu'], 100) !!}-->
+                {{ Str::limit(strip_tags($avis['contenu']), 50, '...') }}
               </td>
               <td class="text-center">
-                <a href="{{ asset(env('IMAGE_PATH')) }}/{{$avis['fichierPDF'] }}">
+                <a href="/storage/app/public/uploads/{{$avis['fichierPDF'] }}">
                   <img src="../assets/images/icon/pdf.png" alt="AVIS DE PUBLICATION" width="50%">
                 </a>
               </td>
@@ -829,7 +830,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="image">Image <sup class="text-danger">*</sup> </label>
+                  <label for="image">Image <sup class="text-danger">*</sup> <span class="text-danger">(1140x670)</span></label>
                   <div class="custom-file">
                     <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" accept="image/*,.png,.jpg,.jpeg,.gif">
                     <label class="custom-file-label" for="inputGroupFile01">Choississez une image</label>

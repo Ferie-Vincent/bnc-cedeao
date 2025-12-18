@@ -13,7 +13,8 @@
                         <div class="post-alternate-3 item post">
                             <div class="entry-media">
                                 <a href="articles/{{ $item->id }}" class="image-post  item-overlay">
-                                    <img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="">
+                                    <img src="/storage/app/public/uploads/{{$item->image}}" alt="">
+                                    <!--<img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="" />-->
                                 </a>
 
                                 <div class="entry-content">
@@ -74,7 +75,7 @@
                                 <div class="entry-media">
 
                                     <a href="articles/{{ $item->id }}" class="image-post item-overlay ">
-                                        <img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="" />
+                                        <img src="/storage/app/public/uploads/{{$item->image}}" alt="">
                                     </a>
 
                                     <header class="entry-header">
@@ -115,7 +116,7 @@
 
             </div>
 
-        </div>
+        </div> 
         <!--/ .section -->
 
         <div class="section padding-off columns medium-12 large-12 background-color-off" style="margin-top: 30px !important;">
@@ -134,12 +135,12 @@
 
                                 <div class="entry-media">
 
-                                    <a href="#" class="image-post item-overlay ">
-                                        <img src="{{ asset(env('IMAGE_PATH')) }}/{{$item->image}}" alt="" />
+                                    <a href="articles/{{$item->id}}" class="image-post item-overlay ">
+                                        <img src="/storage/app/public/uploads/{{$item->image}}" alt="" />
                                     </a>
 
                                     <header class="entry-header">
-                                        <h3 class="entry-title"><a href="#">{{$item->title}}</a></h3>
+                                        <h3 class="entry-title"><a href="articles/{{$item->id}}">{{$item->title}}</a></h3>
                                     </header>
 
                                 </div>
@@ -219,11 +220,11 @@
 
                                     <p>
                                         <span>CONTENU </span> :
-                                        {!! Str::limit($item->contenu, 200,) !!}
+                                        {{ Str::limit(strip_tags($item->contenu), 50, '...') }}
 
                                     </p>
                                     <p>
-                                        <span>FICHIERS RATTACHÉS</span> : <a href="" title="Cliquez pour télécharger">
+                                        <span>FICHIERS RATTACHÉS</span> : <a href="/storage/app/public/uploads/{{$item['fichierPDF'] }}" title="Cliquez pour télécharger">
                                             <img src="assets/images/icon/pdf.png" alt="" width="5%">
                                         </a>
                                     </p>
